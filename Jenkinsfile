@@ -2,14 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkuout Project') {
             steps {
-                echo 'Building..'
+                git "https://github.com/sanyukta32/SketchwallTest.git"
+                echo 'Pulling Repository..'
             }
         }
-        stage('Test') {
+        stage('Run Tests') {
             steps {
-                echo 'Testing..'
+                echo 'Running Test Cases..'
+                sh "mvn clean test"
             }
         }
         stage('Deploy') {
